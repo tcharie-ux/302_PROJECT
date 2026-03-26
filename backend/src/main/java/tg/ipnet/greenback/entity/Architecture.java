@@ -1,16 +1,15 @@
 package tg.ipnet.greenback.entity;
 
-import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name="architecture")
-@EntityListeners(EntityListeners.class)
+@jakarta.persistence.EntityListeners(AuditingEntityListener.class)
 public class Architecture {
     @Id
 @GeneratedValue(strategy = GenerationType.SEQUENCE)

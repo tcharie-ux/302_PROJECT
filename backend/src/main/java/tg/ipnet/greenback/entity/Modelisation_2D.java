@@ -5,19 +5,18 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import tg.ipnet.greenback.dto.Modelisation_3D;
-import tg.ipnet.greenback.dto.Projet;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="administrateur")
-@EntityListeners(EntityListeners.class)
+@Table(name="modelisation_2D")
+@jakarta.persistence.EntityListeners(AuditingEntityListener.class)
 public class Modelisation_2D {
 @Id
 @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,14 +24,15 @@ private int id;
 private String nomModele;
 private LocalDateTime dateCeation;
 private String objet;
+@ManyToOne
 private Projet projet;
-@OneToMany(mappedBy = "modelisation_2D")
+@OneToMany(mappedBy = "modelisation2D")
 private List<Estimation> estimations;
 
-@OneToOne(mappedBy = "modelisation_2D", cascade = CascadeType.ALL)
+@OneToOne(mappedBy = "modelisation2D", cascade = CascadeType.ALL)
 private Modelisation_3D modelisation3D;
 
-@OneToMany(mappedBy = "modelisation_2D", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "modelisation2D", cascade = CascadeType.ALL)
 private List<ElementPlan> elements;
 
 public int getId() {

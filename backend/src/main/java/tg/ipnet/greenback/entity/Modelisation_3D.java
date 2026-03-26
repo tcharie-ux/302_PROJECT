@@ -4,18 +4,18 @@ package tg.ipnet.greenback.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import tg.ipnet.greenback.enums.Format3D;
 
 @Entity
-@Table(name="administrateur")
-@EntityListeners(EntityListeners.class)
+@Table(name="modelisation_3D")
+@jakarta.persistence.EntityListeners(AuditingEntityListener.class)
 public class Modelisation_3D {
      @Id
 @GeneratedValue(strategy = GenerationType.SEQUENCE)

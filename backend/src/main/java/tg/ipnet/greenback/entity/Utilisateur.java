@@ -3,17 +3,19 @@ package tg.ipnet.greenback.entity;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import tg.ipnet.greenback.enums.Role;
 
 @Entity
-@Table(name="administrateur")
-@EntityListeners(EntityListeners.class)
+@Table(name="utilisateur")
+@jakarta.persistence.EntityListeners(AuditingEntityListener.class)
 public class Utilisateur {
 @Id
 @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,6 +25,7 @@ private String prenom;
 private String password;
 private String email;
 private int telephone;
+@Enumerated(EnumType.STRING)
 private Role role;
 @OneToMany(mappedBy = "utilisateur")
 private List<Projet> projets;
