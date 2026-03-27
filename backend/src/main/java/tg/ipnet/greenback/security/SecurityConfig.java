@@ -26,18 +26,13 @@ import tg.ipnet.greenback.security.jwt.AuthTokenFilter;
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    private final UserService userService;
-    private final AuthEntryPointJwt unauthorizedHandler;
-    private final AuthTokenFilter authenticationFilter;
-
-    public SecurityConfig(UserService userService, AuthEntryPointJwt unauthorizedHandler, AuthTokenFilter authenticationFilter) {
-        this.userService = userService;
-        this.unauthorizedHandler = unauthorizedHandler;
-        this.authenticationFilter = authenticationFilter;
-    }
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            AuthEntryPointJwt unauthorizedHandler,
+            AuthTokenFilter authenticationFilter,
+            DaoAuthenticationProvider authenticationProvider
+    ) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> {
@@ -77,7 +72,7 @@ public class SecurityConfig {
                         )
                 );
 
-        http.authenticationProvider(authenticationProvider());
+        http.authenticationProvider(authenticationProvider);
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -89,10 +84,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider authenticationProvider(UserService userService, PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userService);
-        authProvider.setPasswordEncoder(passwordEncoder());
+        authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
 

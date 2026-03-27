@@ -2,7 +2,7 @@ package tg.ipnet.greenback.security.mappers;
 
 
 import org.springframework.stereotype.Service;
-import   tg.ipnet.greenback.security.dto.HistoryReponse;
+import tg.ipnet.greenback.security.dto.HistoryReponse;
 import tg.ipnet.greenback.security.dto.RoleDTO;
 import tg.ipnet.greenback.security.dto.UserDTO;
 import tg.ipnet.greenback.security.dto.UserRoleReponse;
@@ -57,7 +57,7 @@ public class UserMapper {
 
         RoleDTO roleDTO = new RoleDTO();
         roleDTO.setId(role.getId());
-        roleDTO.setName(String.valueOf(role.getName()));
+        roleDTO.setName(role.getName().name());
 
         return roleDTO;
     }

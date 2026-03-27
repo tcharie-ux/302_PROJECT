@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tg.ipnet.greenback.dto.NotificationCreationDTO;
+import tg.ipnet.greenback.enums.Role;
 import tg.ipnet.greenback.enums.StatutNotification;
 import tg.ipnet.greenback.security.model.History;
 import tg.ipnet.greenback.security.model.User;
@@ -106,11 +107,11 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     private boolean isArchitectOrAdmin(User user) {
-        return "ARCHITECTE".equalsIgnoreCase(user.getRoles()) || isAdmin(user);
+        return Role.ARCHITECTE.equals(user.getRoles()) || isAdmin(user);
     }
 
     private boolean isAdmin(User user) {
-        return "ADMIN".equalsIgnoreCase(user.getRoles());
+        return Role.ADMIN.equals(user.getRoles());
     }
 
     private void createHistory(User user, String action) {

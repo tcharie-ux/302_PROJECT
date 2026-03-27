@@ -2,6 +2,7 @@ package tg.ipnet.greenback.security.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import tg.ipnet.greenback.enums.Role;
 import tg.ipnet.greenback.utils.BaseAuditEntity;
 
 import org.hibernate.annotations.UuidGenerator;
@@ -41,8 +42,9 @@ public class User extends BaseAuditEntity implements Serializable {
     @Column(name = "code_direction",nullable = true)
     private String codeDirection;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "roles",nullable = false)
-    private String roles;
+    private Role roles;
 
     public User() {
     }
@@ -111,11 +113,11 @@ public class User extends BaseAuditEntity implements Serializable {
         this.codeDirection = codeDirection;
     }
 
-    public String getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 }

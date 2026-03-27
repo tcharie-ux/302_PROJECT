@@ -1,5 +1,6 @@
 package tg.ipnet.greenback.security.service;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tg.ipnet.greenback.enums.Role;
 import tg.ipnet.greenback.security.UserDetailsImpl;
 import tg.ipnet.greenback.security.UserService;
 import tg.ipnet.greenback.security.dto.HistoryReponse;
@@ -46,7 +48,7 @@ public class UserServiceImpl implements UserService {
     private final HistoryRepository historyRepository;
     private final RoleRepository roleRepository;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserRepository userRepository, UserMapper userMapper, HistoryRepository historyRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, @Lazy AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserRepository userRepository, UserMapper userMapper, HistoryRepository historyRepository, RoleRepository roleRepository) {
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
@@ -98,14 +100,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO registerClient(UserDTO userDTO) {
-        userDTO.setRoles("CLIENT");
+        userDTO.setRoles(Role.CLIENT);
         userDTO.setEnable(true);
         return createUser(userDTO, "Inscription du client ");
     }
 
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
-        if (userDTO.getRoles() == null || userDTO.getRoles().isBlank()) {
+        if (userDTO.getRoles() == null) {
             throw new IllegalArgumentException("Le role est obligatoire");
         }
         return createUser(userDTO, "Enregistrement de l'utilisateur ");
@@ -236,7 +238,7 @@ public class UserServiceImpl implements UserService {
         User currentUser = userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new UsernameNotFoundException("Utilisateur connecte introuvable"));
 
-        boolean isAdmin = "ADMIN".equalsIgnoreCase(currentUser.getRoles());
+        boolean isAdmin = Role.ADMIN.equals(currentUser.getRoles());
         boolean isSelf = currentUser.getPublicId() != null && currentUser.getPublicId().equals(targetUser.getPublicId());
         if (!isAdmin && !isSelf) {
             throw new BadCredentialsException("Vous ne pouvez pas modifier le mot de passe d'un autre utilisateur");

@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
 
     public static UserDetailsImpl build(User user) {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRoles()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRoles().name()));
 
         Long ministere = (long) ((user.getCodeMinistere() != 0) ? user.getCodeMinistere() : 0);
 

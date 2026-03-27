@@ -1,6 +1,8 @@
 package tg.ipnet.greenback.security.dto;
 
 
+import tg.ipnet.greenback.enums.Role;
+
 import java.util.Date;
 
 
@@ -14,13 +16,13 @@ public class UserRoleReponse {
     private String ministereName;
     private String direction;
     private String directionName;
-    private String roles;
+    private Role roles;
 
     public UserRoleReponse() {
     }
 
     public UserRoleReponse(Long id, String fullName, String username, Date createdAt, boolean enable, Long ministere,
-                           String ministereName, String direction, String directionName, String roles) {
+                           String ministereName, String direction, String directionName, Role roles) {
         this.id = id;
         this.fullName = fullName;
         this.username = username;
@@ -105,11 +107,11 @@ public class UserRoleReponse {
         this.directionName = directionName;
     }
 
-    public String getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 }

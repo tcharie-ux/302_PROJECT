@@ -2,6 +2,7 @@ package tg.ipnet.greenback.security.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import tg.ipnet.greenback.enums.Role;
 
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ public class UserDTO {
     private String username;
     @NotBlank
     private String password;
-    private String roles;
+    private Role roles;
     private boolean enable;
     private Long ministere;
     private String direction;
@@ -23,7 +24,7 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String fullName, String username, String password, String roles, boolean enable, Long ministere, String direction, UUID publicId) {
+    public UserDTO(String fullName, String username, String password, Role roles, boolean enable, Long ministere, String direction, UUID publicId) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -58,11 +59,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public String getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 
