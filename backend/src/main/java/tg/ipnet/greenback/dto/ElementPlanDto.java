@@ -1,13 +1,17 @@
 package tg.ipnet.greenback.dto;
 
-public class ElementPlan {
+import tg.ipnet.greenback.entity.Modelisation_2D;
+
+import tg.ipnet.greenback.entity.Modelisation_2D;
+
+public class ElementPlanDto {
 private float longeur;
 private float epaisseur;
 private String type;
 private float hauteur;
 private float position_X;
 private float position_Y;
-private Modelisation_2D modelisation2D;
+private Modelisation_2DDto modelisation2D;
 public float getLongeur() {
     return longeur;
 }
@@ -44,10 +48,10 @@ public float getPosition_Y() {
 public void setPosition_Y(float position_Y) {
     this.position_Y = position_Y;
 }
-public Modelisation_2D getModelisation2D() {
+public Modelisation_2DDto getModelisation2D() {
     return modelisation2D;
 }
-public void setModelisation2D(Modelisation_2D modelisation2d) {
+public void setModelisation2D(Modelisation_2DDto modelisation2d) {
     modelisation2D = modelisation2d;
 }
 }

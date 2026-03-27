@@ -29,8 +29,6 @@ private int telephone;
 private Role role;
 @OneToMany(mappedBy = "utilisateur")
 private List<Projet> projets;
-@OneToMany(mappedBy = "utilisateur")
-private List<Notification> notifications;
 public int getId() {
     return id;
 }
@@ -79,11 +77,4 @@ public List<Projet> getProjets() {
 public void setProjets(List<Projet> projets) {
     this.projets = projets;
 }
-public List<Notification> getNotifications() {
-    return notifications;
-}
-public void setNotifications(List<Notification> notifications) {
-    this.notifications = notifications;
-}
-
 }

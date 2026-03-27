@@ -2,11 +2,13 @@ package tg.ipnet.greenback.dto;
 
 import java.util.List;
 
-public class LigneEstimation {
+import tg.ipnet.greenback.entity.LigneEstimation;
+
+public class LigneEstimationDto {
 private int quantter;
 private float prixTotal;
-private List<LigneEstimation> lignes;
-private Materiaux materiau;
+private List<LigneEstimationDto> lignes;
+private MateriauxDto materiau;
 public int getQuantter() {
     return quantter;
 }
@@ -19,16 +21,16 @@ public float getPrixTotal() {
 public void setPrixTotal(float prixTotal) {
     this.prixTotal = prixTotal;
 }
-public List<LigneEstimation> getLignes() {
+public List<LigneEstimationDto> getLignes() {
     return lignes;
 }
-public void setLignes(List<LigneEstimation> lignes) {
+public void setLignes(List<LigneEstimationDto> lignes) {
     this.lignes = lignes;
 }
-public Materiaux getMateriau() {
+public MateriauxDto getMateriau() {
     return materiau;
 }
-public void setMateriau(Materiaux materiau) {
+public void setMateriau(MateriauxDto materiau) {
     this.materiau = materiau;
 }
 }

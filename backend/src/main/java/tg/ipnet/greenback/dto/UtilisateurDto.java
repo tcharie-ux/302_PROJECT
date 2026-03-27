@@ -2,15 +2,16 @@ package tg.ipnet.greenback.dto;
 
 import java.util.List;
 
-public class Utilisateur {
+import tg.ipnet.greenback.entity.Projet;
+
+public class UtilisateurDto {
 private String nom;
 private String prenom;
 private String password;
 private String email;
 private int telephone;
 private int role;
-private List<Notification> notifications;
-private List<Projet> projets;
+private List<ProjetDto> projets;
 public String getNom() {
     return nom;
 }
@@ -47,16 +48,10 @@ public int getRole() {
 public void setRole(int role) {
     this.role = role;
 }
-public List<Notification> getNotifications() {
-    return notifications;
-}
-public void setNotifications(List<Notification> notifications) {
-    this.notifications = notifications;
-}
-public List<Projet> getProjets() {
+public List<ProjetDto> getProjets() {
     return projets;
 }
-public void setProjets(List<Projet> projets) {
+public void setProjets(List<ProjetDto> projets) {
     this.projets = projets;
 }
 }

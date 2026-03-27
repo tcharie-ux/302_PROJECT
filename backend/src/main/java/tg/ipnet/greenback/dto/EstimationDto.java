@@ -3,11 +3,14 @@ package tg.ipnet.greenback.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Estimation {
+import tg.ipnet.greenback.entity.LigneEstimation;
+import tg.ipnet.greenback.entity.Modelisation_2D;
+
+public class EstimationDto {
 private float couts;
 private LocalDateTime dateEstimation;
-private List<LigneEstimation> lignes;
-private Modelisation_2D modelisation2D;
+private List<LigneEstimationDto> lignes;
+private Modelisation_2DDto modelisation2D;
 public float getCouts() {
     return couts;
 }
@@ -20,16 +23,16 @@ public LocalDateTime getDateEstimation() {
 public void setDateEstimation(LocalDateTime dateEstimation) {
     this.dateEstimation = dateEstimation;
 }
-public List<LigneEstimation> getLignes() {
+public List<LigneEstimationDto> getLignes() {
     return lignes;
 }
-public void setLignes(List<LigneEstimation> lignes) {
+public void setLignes(List<LigneEstimationDto> lignes) {
     this.lignes = lignes;
 }
-public Modelisation_2D getModelisation2D() {
+public Modelisation_2DDto getModelisation2D() {
     return modelisation2D;
 }
-public void setModelisation2D(Modelisation_2D modelisation2d) {
+public void setModelisation2D(Modelisation_2DDto modelisation2d) {
     modelisation2D = modelisation2d;
 }
 }

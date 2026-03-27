@@ -1,4 +1,4 @@
-package tg.ipnet.greenback.security.api;
+package tg.ipnet.greenback.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tg.ipnet.greenback.security.NotificationService;
-import tg.ipnet.greenback.security.dto.NotificationCreateDTO;
-import tg.ipnet.greenback.security.dto.NotificationResponseDTO;
+import tg.ipnet.greenback.dto.NotificationCreationDTO;
+import tg.ipnet.greenback.dto.NotificationDto;
+import tg.ipnet.greenback.service.NotificationService;
 
 import java.util.List;
 
@@ -38,25 +38,25 @@ public class NotificationApi {
                     @ApiResponse(responseCode = "401", description = "Acces refuse")
             }
     )
-    public ResponseEntity<NotificationResponseDTO> sendNotification(@RequestBody @Valid NotificationCreateDTO request) {
-        return new ResponseEntity<>(notificationService.sendNotification(request), HttpStatus.CREATED);
+    public ResponseEntity<NotificationDto> envoyerNotification(@RequestBody @Valid NotificationCreationDTO demande) {
+        return new ResponseEntity<>(notificationService.envoyerNotification(demande), HttpStatus.CREATED);
     }
 
     @GetMapping("/received")
     @Operation(summary = "Lister les notifications recues")
-    public ResponseEntity<List<NotificationResponseDTO>> getReceivedNotifications() {
-        return ResponseEntity.ok(notificationService.getReceivedNotifications());
+    public ResponseEntity<List<NotificationDto>> listerNotificationsRecues() {
+        return ResponseEntity.ok(notificationService.listerNotificationsRecues());
     }
 
     @GetMapping("/sent")
     @Operation(summary = "Lister les notifications envoyees")
-    public ResponseEntity<List<NotificationResponseDTO>> getSentNotifications() {
-        return ResponseEntity.ok(notificationService.getSentNotifications());
+    public ResponseEntity<List<NotificationDto>> listerNotificationsEnvoyees() {
+        return ResponseEntity.ok(notificationService.listerNotificationsEnvoyees());
     }
 
     @PutMapping("/{notificationId}/accept")
     @Operation(summary = "Accepter une notification")
-    public ResponseEntity<NotificationResponseDTO> acceptNotification(@PathVariable Long notificationId) {
-        return ResponseEntity.ok(notificationService.acceptNotification(notificationId));
+    public ResponseEntity<NotificationDto> accepterNotification(@PathVariable Long notificationId) {
+        return ResponseEntity.ok(notificationService.accepterNotification(notificationId));
     }
 }

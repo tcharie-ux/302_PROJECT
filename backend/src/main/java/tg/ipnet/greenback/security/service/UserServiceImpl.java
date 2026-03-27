@@ -26,6 +26,7 @@ import tg.ipnet.greenback.security.model.User;
 import tg.ipnet.greenback.security.repository.HistoryRepository;
 import tg.ipnet.greenback.security.repository.RoleRepository;
 import tg.ipnet.greenback.security.repository.UserRepository;
+import tg.ipnet.greenback.utils.ResourceNotFoundException;
 
 import java.util.Date;
 import java.util.List;

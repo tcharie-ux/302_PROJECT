@@ -2,7 +2,7 @@ package tg.ipnet.greenback.security.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import tg.ipnet.greenback.security.service.BaseAuditEntity;
+import tg.ipnet.greenback.utils.BaseAuditEntity;
 
 import org.hibernate.annotations.UuidGenerator;
 

@@ -3,14 +3,19 @@ package tg.ipnet.greenback.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Modelisation_2D {
+import tg.ipnet.greenback.entity.ElementPlan;
+import tg.ipnet.greenback.entity.Estimation;
+import tg.ipnet.greenback.entity.Modelisation_3D;
+import tg.ipnet.greenback.entity.Projet;
+
+public class Modelisation_2DDto {
 private String nomModele;
 private LocalDateTime dateCeation;
 private String objet;
-private Projet projet;
-private List<ElementPlan> elements;
-private Modelisation_3D modelisation3D;
-private List<Estimation> estimations;
+private ProjetDto projet;
+private List<ElementPlanDto> elements;
+private Modelisation_3DDto modelisation3D;
+private List<EstimationDto> estimations;
 public String getNomModele() {
     return nomModele;
 }
@@ -29,28 +34,28 @@ public String getObjet() {
 public void setObjet(String objet) {
     this.objet = objet;
 }
-public Projet getProjet() {
+public ProjetDto getProjet() {
     return projet;
 }
-public void setProjet(Projet projet) {
+public void setProjet(ProjetDto projet) {
     this.projet = projet;
 }
-public List<ElementPlan> getElements() {
+public List<ElementPlanDto> getElements() {
     return elements;
 }
-public void setElements(List<ElementPlan> elements) {
+public void setElements(List<ElementPlanDto> elements) {
     this.elements = elements;
 }
-public Modelisation_3D getModelisation3D() {
+public Modelisation_3DDto getModelisation3D() {
     return modelisation3D;
 }
-public void setModelisation3D(Modelisation_3D modelisation3d) {
+public void setModelisation3D(Modelisation_3DDto modelisation3d) {
     modelisation3D = modelisation3d;
 }
-public List<Estimation> getEstimations() {
+public List<EstimationDto> getEstimations() {
     return estimations;
 }
-public void setEstimations(List<Estimation> estimations) {
+public void setEstimations(List<EstimationDto> estimations) {
     this.estimations = estimations;
 }
 

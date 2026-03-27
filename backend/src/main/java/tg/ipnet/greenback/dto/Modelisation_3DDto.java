@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import tg.ipnet.greenback.enums.Format3D;
 
-public class Modelisation_3D {
+public class Modelisation_3DDto {
 
     private int id;
 private String nomModel;

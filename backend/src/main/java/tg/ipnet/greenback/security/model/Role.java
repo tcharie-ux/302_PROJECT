@@ -9,8 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import tg.ipnet.greenback.utils.BaseAuditEntity;
+
 import org.hibernate.annotations.UuidGenerator;
-import tg.ipnet.greenback.security.service.BaseAuditEntity;
 
 import java.io.Serializable;
 import java.util.UUID;

@@ -3,14 +3,17 @@ package tg.ipnet.greenback.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Projet {
+import tg.ipnet.greenback.entity.Modelisation_2D;
+import tg.ipnet.greenback.entity.Utilisateur;
+
+public class ProjetDto {
 private String description;
 private String nomProjet;
 private boolean statut;
 private LocalDateTime dateCreation;
-private List<Validation> validations;
-private Utilisateur utilisateur;
-private List<Modelisation_2D> modeles2D;
+private List<ValidationDto> validations;
+private UtilisateurDto utilisateur;
+private List<Modelisation_2DDto> modeles2D;
 public String getDescription() {
     return description;
 }
@@ -35,22 +38,22 @@ public LocalDateTime getDateCreation() {
 public void setDateCreation(LocalDateTime dateCreation) {
     this.dateCreation = dateCreation;
 }
-public List<Validation> getValidations() {
+public List<ValidationDto> getValidations() {
     return validations;
 }
-public void setValidations(List<Validation> validations) {
+public void setValidations(List<ValidationDto> validations) {
     this.validations = validations;
 }
-public Utilisateur getUtilisateur() {
+public UtilisateurDto getUtilisateur() {
     return utilisateur;
 }
-public void setUtilisateur(Utilisateur utilisateur) {
+public void setUtilisateur(UtilisateurDto utilisateur) {
     this.utilisateur = utilisateur;
 }
-public List<Modelisation_2D> getModeles2D() {
+public List<Modelisation_2DDto> getModeles2D() {
     return modeles2D;
 }
-public void setModeles2D(List<Modelisation_2D> modeles2d) {
+public void setModeles2D(List<Modelisation_2DDto> modeles2d) {
     modeles2D = modeles2d;
 }
 }

@@ -2,11 +2,13 @@ package tg.ipnet.greenback.dto;
 
 import java.time.LocalDateTime;
 
-public class Validation {
+import tg.ipnet.greenback.entity.Projet;
+
+public class ValidationDto {
 private String commentaire;
 private Boolean statut;
 private LocalDateTime dateValidation;
-private Projet projet;
+private ProjetDto projet;
 
 public String getCommentaire() {
     return commentaire;
@@ -26,10 +28,10 @@ public LocalDateTime getDateValidation() {
 public void setDateValidation(LocalDateTime dateValidation) {
     this.dateValidation = dateValidation;
 }
-public Projet getProjet() {
+public ProjetDto getProjet() {
     return projet;
 }
-public void setProjet(Projet projet) {
+public void setProjet(ProjetDto projet) {
     this.projet = projet;
 }
 

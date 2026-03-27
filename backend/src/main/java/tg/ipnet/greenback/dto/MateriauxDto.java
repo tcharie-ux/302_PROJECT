@@ -2,7 +2,7 @@ package tg.ipnet.greenback.dto;
 
 import tg.ipnet.greenback.enums.UniteMateriau;
 
-public class Materiaux {
+public class MateriauxDto {
 private String nomMateriau;
 private String type;
 private float prixUnitaire;

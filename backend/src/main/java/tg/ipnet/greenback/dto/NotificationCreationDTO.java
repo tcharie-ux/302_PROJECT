@@ -1,24 +1,24 @@
-package tg.ipnet.greenback.security.dto;
+package tg.ipnet.greenback.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public class NotificationCreateDTO {
+public class NotificationCreationDTO {
 
     @NotNull
-    private UUID recipientId;
+    private UUID idDestinataire;
 
     @NotBlank
     private String message;
 
-    public UUID getRecipientId() {
-        return recipientId;
+    public UUID getIdDestinataire() {
+        return idDestinataire;
     }
 
-    public void setRecipientId(UUID recipientId) {
-        this.recipientId = recipientId;
+    public void setIdDestinataire(UUID idDestinataire) {
+        this.idDestinataire = idDestinataire;
     }
 
     public String getMessage() {

@@ -2,7 +2,7 @@ package tg.ipnet.greenback.dto;
 
 import jakarta.persistence.Lob;
 
-public class Architecte extends Utilisateur{
+public class ArchitecteDto extends UtilisateurDto{
 private int id;
 private String fileName;
 private String fileType;

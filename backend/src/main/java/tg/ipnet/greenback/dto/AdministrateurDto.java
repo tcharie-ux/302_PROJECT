@@ -1,6 +1,6 @@
 package tg.ipnet.greenback.dto;
 
-public class Administrateur extends Utilisateur{
+public class AdministrateurDto extends UtilisateurDto{
 private int id;
 
 public int getId() {

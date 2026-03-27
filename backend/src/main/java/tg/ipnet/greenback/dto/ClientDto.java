@@ -1,6 +1,6 @@
 package tg.ipnet.greenback.dto;
 
-public class Client  extends Utilisateur{
+public class ClientDto  extends UtilisateurDto{
 private int id;
 private String adresse;
 private String document;

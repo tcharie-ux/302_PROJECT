@@ -1,4 +1,4 @@
-package tg.ipnet.greenback.security.service;
+package tg.ipnet.greenback.utils;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
