@@ -59,4 +59,16 @@ public class NotificationApi {
     public ResponseEntity<NotificationDto> accepterNotification(@PathVariable Long notificationId) {
         return ResponseEntity.ok(notificationService.accepterNotification(notificationId));
     }
+
+    @GetMapping("/invitations/{tokenInvitation}")
+    @Operation(summary = "Consulter une invitation architecte par token")
+    public ResponseEntity<NotificationDto> consulterInvitation(@PathVariable String tokenInvitation) {
+        return ResponseEntity.ok(notificationService.consulterInvitation(tokenInvitation));
+    }
+
+    @PutMapping("/invitations/{tokenInvitation}/accept")
+    @Operation(summary = "Accepter une invitation architecte depuis un lien email")
+    public ResponseEntity<NotificationDto> accepterInvitationParToken(@PathVariable String tokenInvitation) {
+        return ResponseEntity.ok(notificationService.accepterInvitationParToken(tokenInvitation));
+    }
 }

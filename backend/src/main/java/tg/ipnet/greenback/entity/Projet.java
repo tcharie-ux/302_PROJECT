@@ -3,6 +3,8 @@ package tg.ipnet.greenback.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,10 +14,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import tg.ipnet.greenback.security.model.User;
 
 
 @Entity
-@Table(name="projetn")
+@Table(name="projet")
 @jakarta.persistence.EntityListeners(AuditingEntityListener.class)
 public class Projet {
 @Id
@@ -30,8 +33,15 @@ private List<Validation> validations;
 @OneToMany(mappedBy = "projet")
 private List<Modelisation_2D> modeles2D;
 @ManyToOne
-@JoinColumn(name = "utilisateur_id")
-private Utilisateur utilisateur;
+@JoinColumn(name = "client_id", nullable = false)
+private User client;
+@ManyToOne
+@JoinColumn(name = "architecte_id")
+private User architecte;
+@Column(name = "email_architecte_invite")
+private String emailArchitecteInvite;
+@OneToMany(mappedBy = "projet", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Architecture> architectures;
 public int getId() {
     return id;
 }
@@ -74,10 +84,28 @@ public List<Modelisation_2D> getModeles2D() {
 public void setModeles2D(List<Modelisation_2D> modeles2d) {
     modeles2D = modeles2d;
 }
-public Utilisateur getUtilisateur() {
-    return utilisateur;
+public User getClient() {
+    return client;
 }
-public void setUtilisateur(Utilisateur utilisateur) {
-    this.utilisateur = utilisateur;
+public void setClient(User client) {
+    this.client = client;
+}
+public User getArchitecte() {
+    return architecte;
+}
+public void setArchitecte(User architecte) {
+    this.architecte = architecte;
+}
+public String getEmailArchitecteInvite() {
+    return emailArchitecteInvite;
+}
+public void setEmailArchitecteInvite(String emailArchitecteInvite) {
+    this.emailArchitecteInvite = emailArchitecteInvite;
+}
+public List<Architecture> getArchitectures() {
+    return architectures;
+}
+public void setArchitectures(List<Architecture> architectures) {
+    this.architectures = architectures;
 }
 }

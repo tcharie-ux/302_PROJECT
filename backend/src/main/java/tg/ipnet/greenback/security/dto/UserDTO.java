@@ -20,11 +20,12 @@ public class UserDTO {
     private Long ministere;
     private String direction;
     private UUID publicId;
+    private String invitationToken;
 
     public UserDTO() {
     }
 
-    public UserDTO(String fullName, String username, String password, Role roles, boolean enable, Long ministere, String direction, UUID publicId) {
+    public UserDTO(String fullName, String username, String password, Role roles, boolean enable, Long ministere, String direction, UUID publicId, String invitationToken) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -33,6 +34,7 @@ public class UserDTO {
         this.ministere = ministere;
         this.direction = direction;
         this.publicId = publicId;
+        this.invitationToken = invitationToken;
     }
 
     public String getFullName() {
@@ -97,5 +99,13 @@ public class UserDTO {
 
     public void setPublicId(UUID publicId) {
         this.publicId = publicId;
+    }
+
+    public String getInvitationToken() {
+        return invitationToken;
+    }
+
+    public void setInvitationToken(String invitationToken) {
+        this.invitationToken = invitationToken;
     }
 }

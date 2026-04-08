@@ -28,6 +28,8 @@ import tg.ipnet.greenback.security.model.User;
 import tg.ipnet.greenback.security.repository.HistoryRepository;
 import tg.ipnet.greenback.security.repository.RoleRepository;
 import tg.ipnet.greenback.security.repository.UserRepository;
+import tg.ipnet.greenback.dto.NotificationDto;
+import tg.ipnet.greenback.service.NotificationService;
 import tg.ipnet.greenback.utils.ResourceNotFoundException;
 
 import java.util.Date;
@@ -47,8 +49,18 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final HistoryRepository historyRepository;
     private final RoleRepository roleRepository;
+    private final NotificationService notificationService;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, @Lazy AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserRepository userRepository, UserMapper userMapper, HistoryRepository historyRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(
+            PasswordEncoder passwordEncoder,
+            @Lazy AuthenticationManager authenticationManager,
+            JwtUtils jwtUtils,
+            UserRepository userRepository,
+            UserMapper userMapper,
+            HistoryRepository historyRepository,
+            RoleRepository roleRepository,
+            NotificationService notificationService
+    ) {
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
@@ -56,6 +68,7 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
         this.historyRepository = historyRepository;
         this.roleRepository = roleRepository;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -73,10 +86,20 @@ public class UserServiceImpl implements UserService {
                     new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword())
             );
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            String token = jwtUtils.generateJwtToken(authentication);
+            User utilisateur = userRepository.findByUsername(loginDTO.getUsername())
+                    .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
+            utilisateur = notificationService.synchroniserInvitationsArchitecte(utilisateur, null);
 
-            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            UserDetailsImpl userDetails = UserDetailsImpl.build(utilisateur);
+            Authentication authenticationFinale = new UsernamePasswordAuthenticationToken(
+                    userDetails,
+                    authentication.getCredentials(),
+                    userDetails.getAuthorities()
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(authenticationFinale);
+            String token = jwtUtils.generateJwtToken(authenticationFinale);
+
             List<String> roles = userDetails.getAuthorities()
                     .stream()
                     .map(item -> item.getAuthority())
@@ -100,9 +123,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO registerClient(UserDTO userDTO) {
-        userDTO.setRoles(Role.CLIENT);
+        userDTO.setRoles(resolveRegistrationRole(userDTO));
         userDTO.setEnable(true);
-        return createUser(userDTO, "Inscription du client ");
+        return createUser(userDTO, "Inscription de l'utilisateur ");
     }
 
     @Override
@@ -219,6 +242,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 
         User savedUser = userRepository.save(user);
+        savedUser = notificationService.synchroniserInvitationsArchitecte(savedUser, userDTO.getInvitationToken());
 
         History history = new History();
         history.setName(historyPrefix + userDTO.getFullName());
@@ -227,6 +251,27 @@ public class UserServiceImpl implements UserService {
         historyRepository.save(history);
 
         return userMapper.mapToUserDTO(savedUser);
+    }
+
+    private Role resolveRegistrationRole(UserDTO userDTO) {
+        if (userDTO.getInvitationToken() != null && !userDTO.getInvitationToken().isBlank()) {
+            NotificationDto invitation = notificationService.consulterInvitation(userDTO.getInvitationToken());
+            if (!"ACCEPTEE".equals(invitation.getStatut())) {
+                throw new IllegalArgumentException("L'invitation architecte doit etre acceptee avant l'inscription");
+            }
+            if (invitation.getEmailDestinataire() != null
+                    && !invitation.getEmailDestinataire().equalsIgnoreCase(userDTO.getUsername())) {
+                throw new IllegalArgumentException("Le compte cree doit utiliser l'email invite");
+            }
+            return Role.ARCHITECTE;
+        }
+
+        Optional<User> existingUser = userRepository.findByUsername(userDTO.getUsername());
+        if (existingUser.isPresent() && Role.ARCHITECTE.equals(existingUser.get().getRoles())) {
+            return Role.ARCHITECTE;
+        }
+
+        return Role.CLIENT;
     }
 
     private void ensureCurrentUserCanManage(User targetUser) {

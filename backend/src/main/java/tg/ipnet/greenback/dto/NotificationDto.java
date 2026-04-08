@@ -7,10 +7,15 @@ public class NotificationDto {
     private Long idNotification;
     private String message;
     private String statut;
+    private String typeNotification;
     private UUID idEmetteur;
     private String nomEmetteur;
     private UUID idDestinataire;
     private String nomDestinataire;
+    private String emailDestinataire;
+    private Integer idProjet;
+    private String nomProjet;
+    private String tokenInvitation;
     private LocalDateTime dateEnvoie;
     private LocalDateTime dateReponse;
 
@@ -36,6 +41,14 @@ public class NotificationDto {
 
     public void setStatut(String statut) {
         this.statut = statut;
+    }
+
+    public String getTypeNotification() {
+        return typeNotification;
+    }
+
+    public void setTypeNotification(String typeNotification) {
+        this.typeNotification = typeNotification;
     }
 
     public UUID getIdEmetteur() {
@@ -68,6 +81,38 @@ public class NotificationDto {
 
     public void setNomDestinataire(String nomDestinataire) {
         this.nomDestinataire = nomDestinataire;
+    }
+
+    public String getEmailDestinataire() {
+        return emailDestinataire;
+    }
+
+    public void setEmailDestinataire(String emailDestinataire) {
+        this.emailDestinataire = emailDestinataire;
+    }
+
+    public Integer getIdProjet() {
+        return idProjet;
+    }
+
+    public void setIdProjet(Integer idProjet) {
+        this.idProjet = idProjet;
+    }
+
+    public String getNomProjet() {
+        return nomProjet;
+    }
+
+    public void setNomProjet(String nomProjet) {
+        this.nomProjet = nomProjet;
+    }
+
+    public String getTokenInvitation() {
+        return tokenInvitation;
+    }
+
+    public void setTokenInvitation(String tokenInvitation) {
+        this.tokenInvitation = tokenInvitation;
     }
 
     public LocalDateTime getDateEnvoie() {

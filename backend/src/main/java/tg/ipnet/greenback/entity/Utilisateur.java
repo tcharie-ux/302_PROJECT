@@ -1,14 +1,11 @@
 package tg.ipnet.greenback.entity;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import tg.ipnet.greenback.enums.Role;
@@ -27,8 +24,6 @@ private String email;
 private int telephone;
 @Enumerated(EnumType.STRING)
 private Role role;
-@OneToMany(mappedBy = "utilisateur")
-private List<Projet> projets;
 public int getId() {
     return id;
 }
@@ -70,11 +65,5 @@ public Role getRole() {
 }
 public void setRole(Role role) {
     this.role = role;
-}
-public List<Projet> getProjets() {
-    return projets;
-}
-public void setProjets(List<Projet> projets) {
-    this.projets = projets;
 }
 }
