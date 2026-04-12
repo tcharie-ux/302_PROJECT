@@ -63,6 +63,12 @@ public class ProjetApi {
         return new ResponseEntity<>(projetService.ajouterEsquisse(idProjet, fichier), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{idProjet}/sketches")
+    @Operation(summary = "Lister les esquisses d'un projet")
+    public ResponseEntity<List<ArchitectureDto>> listerEsquisses(@PathVariable Integer idProjet) {
+        return ResponseEntity.ok(projetService.listerEsquisses(idProjet));
+    }
+
     @GetMapping("/{idProjet}/sketches/{idArchitecture}")
     @Operation(summary = "Telecharger une esquisse")
     public ResponseEntity<ByteArrayResource> telechargerEsquisse(

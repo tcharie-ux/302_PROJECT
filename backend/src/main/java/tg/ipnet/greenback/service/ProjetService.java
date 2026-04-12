@@ -13,5 +13,6 @@ public interface ProjetService {
     List<ProjetDto> listerMesProjets();
     ProjetDto obtenirProjet(Integer idProjet);
     ArchitectureDto ajouterEsquisse(Integer idProjet, MultipartFile fichier);
+    List<ArchitectureDto> listerEsquisses(Integer idProjet);
     Architecture chargerEsquisse(Integer idProjet, Integer idArchitecture);
 }

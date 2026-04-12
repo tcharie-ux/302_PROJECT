@@ -3,11 +3,18 @@ package tg.ipnet.greenback.dto;
 import tg.ipnet.greenback.enums.UniteMateriau;
 
 public class MateriauxDto {
+private Integer id;
 private String nomMateriau;
 private String type;
 private float prixUnitaire;
 private int quantiterTotal;
 private UniteMateriau Uniter;
+public Integer getId() {
+    return id;
+}
+public void setId(Integer id) {
+    this.id = id;
+}
 public String getNomMateriau() {
     return nomMateriau;
 }

@@ -3,19 +3,22 @@ package tg.ipnet.greenback.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import tg.ipnet.greenback.entity.ElementPlan;
-import tg.ipnet.greenback.entity.Estimation;
-import tg.ipnet.greenback.entity.Modelisation_3D;
-import tg.ipnet.greenback.entity.Projet;
-
 public class Modelisation_2DDto {
+private Integer id;
 private String nomModele;
 private LocalDateTime dateCeation;
 private String objet;
+private Integer idProjet;
 private ProjetDto projet;
 private List<ElementPlanDto> elements;
 private Modelisation_3DDto modelisation3D;
 private List<EstimationDto> estimations;
+public Integer getId() {
+    return id;
+}
+public void setId(Integer id) {
+    this.id = id;
+}
 public String getNomModele() {
     return nomModele;
 }
@@ -33,6 +36,12 @@ public String getObjet() {
 }
 public void setObjet(String objet) {
     this.objet = objet;
+}
+public Integer getIdProjet() {
+    return idProjet;
+}
+public void setIdProjet(Integer idProjet) {
+    this.idProjet = idProjet;
 }
 public ProjetDto getProjet() {
     return projet;

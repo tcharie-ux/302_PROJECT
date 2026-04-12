@@ -34,6 +34,7 @@ public class ProjetServiceImpl implements ProjetService {
 
     private final ProjetRepository projetRepository;
     private final ArchitectureRepository architectureRepository;
+    private final Modelisation2DService modelisation2DService;
     private final UserRepository userRepository;
     private final HistoryRepository historyRepository;
     private final NotificationService notificationService;
@@ -41,12 +42,14 @@ public class ProjetServiceImpl implements ProjetService {
     public ProjetServiceImpl(
             ProjetRepository projetRepository,
             ArchitectureRepository architectureRepository,
+            Modelisation2DService modelisation2DService,
             UserRepository userRepository,
             HistoryRepository historyRepository,
             NotificationService notificationService
     ) {
         this.projetRepository = projetRepository;
         this.architectureRepository = architectureRepository;
+        this.modelisation2DService = modelisation2DService;
         this.userRepository = userRepository;
         this.historyRepository = historyRepository;
         this.notificationService = notificationService;
@@ -142,6 +145,16 @@ public class ProjetServiceImpl implements ProjetService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<ArchitectureDto> listerEsquisses(Integer idProjet) {
+        Projet projet = getProjetAccessible(idProjet, getCurrentUser());
+        return architectureRepository.findByProjetIdOrderByDateDepotDesc(projet.getId())
+                .stream()
+                .map(this::mapperArchitecture)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Architecture chargerEsquisse(Integer idProjet, Integer idArchitecture) {
         User utilisateurCourant = getCurrentUser();
         Projet projet = getProjetAccessible(idProjet, utilisateurCourant);
@@ -215,11 +228,11 @@ public class ProjetServiceImpl implements ProjetService {
             dto.setTokenInvitationArchitecte(invitation.getTokenInvitation());
         }
 
-        List<ArchitectureDto> architectures = architectureRepository.findByProjetIdOrderByDateDepotDesc(projet.getId())
+        dto.setArchitectures(architectureRepository.findByProjetIdOrderByDateDepotDesc(projet.getId())
                 .stream()
                 .map(this::mapperArchitecture)
-                .toList();
-        dto.setArchitectures(architectures);
+                .toList());
+        dto.setModeles2D(modelisation2DService.listerModelisations2D(projet.getId()));
         return dto;
     }
 
