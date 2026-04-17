@@ -1,0 +1,68 @@
+<main class="admin-page">
+  <section class="admin-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Administration</p>
+      <h1>
+        Dashboard Admin
+        <span>{{ currentUser?.fullName || currentUser?.username || 'Administrateur' }}</span>
+      </h1>
+      <p class="intro">
+        Gere les utilisateurs, surveille l'activite generale et accede rapidement aux outils
+        de supervision de la plateforme.
+      </p>
+
+      <div class="hero-actions">
+        <a routerLink="/utilisateurs" class="primary-action">Gerer les utilisateurs</a>
+        <a routerLink="/dashboard-client" class="secondary-action">Vue utilisateur</a>
+        <button type="button" class="secondary-action" (click)="logout()">
+          Se deconnecter
+        </button>
+      </div>
+    </div>
+
+    <aside class="admin-panel">
+      <p class="panel-label">Acces actuel</p>
+      <h2>{{ currentUser?.roles?.[0] || 'Admin' }}</h2>
+      <p>{{ currentUser?.username || 'Compte connecte' }}</p>
+      <div class="panel-stats">
+        <span>Securite active</span>
+        <span>Gestion des comptes</span>
+        <span>Suivi des acces</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="admin-grid">
+    <article class="admin-card accent">
+      <h3>Utilisateurs</h3>
+      <p>Consulte la liste des comptes et controle les acces depuis un seul espace.</p>
+      <a routerLink="/utilisateurs">Ouvrir la liste</a>
+    </article>
+
+    <article class="admin-card">
+      <h3>Supervision</h3>
+      <p>Visualise les zones importantes de l'application et les prochains points de controle.</p>
+      <ul>
+        <li>Verifier les comptes actifs</li>
+        <li>Controler les roles attribues</li>
+        <li>Suivre les acces aux espaces sensibles</li>
+      </ul>
+    </article>
+
+    <article class="admin-card">
+      <h3>Profil</h3>
+      <p>
+        Nom :
+        <strong>{{ currentUser?.fullName || 'Non disponible' }}</strong>
+      </p>
+      <p>
+        Identifiant :
+        <strong>{{ currentUser?.username || 'Non disponible' }}</strong>
+      </p>
+      <p>
+        Direction :
+        <strong>{{ currentUser?.direction || 'Non definie' }}</strong>
+      </p>
+    </article>
+  </section>
+</main>

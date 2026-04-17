@@ -1,0 +1,116 @@
+<div class="dashboard-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <p class="brand-mark">ARCHI</p>
+      <p class="brand-name">MORPH</p>
+    </div>
+
+    <nav class="menu">
+      <a class="menu-item active" routerLink="/dashboard-client">Tableau de bord</a>
+      <a class="menu-item" routerLink="/dashboard-client">Mes projets</a>
+      <a class="menu-item" routerLink="/dashboard-client">Plan initial</a>
+      <a class="menu-item" routerLink="/dashboard-client">Modele 2D</a>
+      <a class="menu-item" routerLink="/dashboard-client">Modele 3D</a>
+      <a class="menu-item" routerLink="/dashboard-client">Materiaux et couts</a>
+      <a *ngIf="isAdmin" class="menu-item" routerLink="/dashboard-admin">Vue admin</a>
+      <a *ngIf="isAdmin" class="menu-item" routerLink="/utilisateurs">Utilisateurs</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button type="button" class="ghost-btn" (click)="logout()">Se deconnecter</button>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <label class="search">
+        <input type="text" placeholder="Rechercher..." />
+      </label>
+      <div class="profile-pill">
+        <div class="avatar">
+          {{ (currentUser?.fullName || currentUser?.username || 'U').charAt(0).toUpperCase() }}
+        </div>
+        <span>{{ currentUser?.fullName || currentUser?.username || 'Client' }}</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <h1>Bonjour, Client</h1>
+
+      <section class="overview-grid">
+        <article class="card action-card">
+          <button type="button" class="primary-btn">Creer un nouveau projet</button>
+        </article>
+
+        <article class="card stage-card">
+          <div class="steps">
+            <span>Esquisse</span>
+            <span>Validation</span>
+            <span class="active">Plan 2D</span>
+            <span>Vue 3D</span>
+            <span>Estimation</span>
+          </div>
+        </article>
+
+        <article class="card team-card">
+          <h2>Membres de l'equipe</h2>
+          <ul>
+            <li>
+              <strong>{{ currentUser?.fullName || 'Jean D.' }}</strong>
+              <small>{{ currentUser?.roles?.[0] || 'Ingenieur' }}</small>
+            </li>
+            <li>
+              <strong>Architecte</strong>
+              <small>Architecture</small>
+            </li>
+            <li>
+              <strong>Ingenieur</strong>
+              <small>Structure</small>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-grid">
+        <article class="card preview-card">
+          <div class="image-panel">
+            <span>Modele principal</span>
+          </div>
+          <div class="tools-row">
+            <button type="button">Zoom</button>
+            <button type="button">Pan</button>
+            <button type="button">3D</button>
+          </div>
+        </article>
+
+        <article class="card blueprint-card">
+          <div class="blueprint">Plan technique</div>
+          <div class="stats">
+            <div>
+              <p>Projets actifs</p>
+              <strong>5</strong>
+            </div>
+            <div>
+              <p>Budget consomme</p>
+              <strong>65%</strong>
+            </div>
+            <div>
+              <p>Taches en retard</p>
+              <strong class="danger">2</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card activity-card">
+          <h2>Activite recente</h2>
+          <ul>
+            <li>Architecture du projet mise a jour</li>
+            <li>Validation client en cours</li>
+            <li>Nouveau plan partage avec l'equipe</li>
+            <li>Reunion technique planifiee</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
