@@ -44,20 +44,14 @@ public class JwtUtils {
     }
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(key())
+                    .build()
+                    .parseClaimsJws(token);
             return true;
-        } catch (SignatureException e) {
-            logger.info("Invalid JWT signature.");
-            logger.trace("Invalid JWT signature trace: {}", e);
-        } catch (MalformedJwtException e) {
-            logger.info("Invalid JWT token.");
+        } catch (JwtException e) {
+            logger.info("Invalid JWT token: {}", e.getMessage());
             logger.trace("Invalid JWT token trace: {}", e);
-        } catch (ExpiredJwtException e) {
-            logger.info("Expired JWT token.");
-            logger.trace("Expired JWT token trace: {}", e);
-        } catch (UnsupportedJwtException e) {
-            logger.info("Unsupported JWT token.");
-            logger.trace("Unsupported JWT token trace: {}", e);
         } catch (IllegalArgumentException e) {
             logger.info("JWT token compact of handler are invalid.");
             logger.trace("JWT token compact of handler are invalid trace: {}", e);

@@ -31,7 +31,6 @@ export class Register {
       telephone: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
-      role: ['CLIENT', [Validators.required]],
       acceptTerms: [false, [Validators.requiredTrue]],
     });
   }
@@ -46,7 +45,7 @@ export class Register {
     }
 
     const fullName = this.registerForm.controls.fullName.value?.trim() ?? '';
-    const email = this.registerForm.controls.email.value?.trim() ?? '';
+    const username = this.registerForm.controls.email.value?.trim().toLowerCase() ?? '';
     const password = this.registerForm.controls.password.value ?? '';
     const confirmPassword = this.registerForm.controls.confirmPassword.value ?? '';
 
@@ -55,10 +54,8 @@ export class Register {
       return;
     }
 
-    const { prenom, nom } = this.splitFullName(fullName);
-
     this.loading = true;
-    this.authService.register({ nom, prenom, email, password }).subscribe({
+    this.authService.register({ fullName, username, password }).subscribe({
       next: () => {
         this.loading = false;
         this.successMessage = 'Compte cree avec succes. Tu peux maintenant te connecter.';
@@ -68,7 +65,6 @@ export class Register {
           telephone: '',
           password: '',
           confirmPassword: '',
-          role: 'CLIENT',
           acceptTerms: false,
         });
         this.router.navigate(['/login']);
@@ -79,19 +75,5 @@ export class Register {
           error?.error?.message || error?.error?.error || 'Inscription impossible.';
       },
     });
-  }
-
-  private splitFullName(fullName: string): { prenom: string; nom: string } {
-    const parts = fullName.split(' ').filter(Boolean);
-    if (parts.length === 0) {
-      return { prenom: '', nom: '' };
-    }
-    if (parts.length === 1) {
-      return { prenom: parts[0], nom: parts[0] };
-    }
-    return {
-      prenom: parts[0],
-      nom: parts.slice(1).join(' '),
-    };
   }
 }

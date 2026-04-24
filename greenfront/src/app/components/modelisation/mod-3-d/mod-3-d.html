@@ -1,0 +1,42 @@
+<div class="viewer-container">
+  <div class="viewer-header">
+    <div>
+      <h3>Apercu immersion 3D</h3>
+      <p *ngIf="project">{{ project.name }} - volume estime {{ estimatedVolume | number:'1.0-0' }} m3</p>
+    </div>
+    <span class="badge">Spline IA cible</span>
+  </div>
+
+  <div class="canvas-wrapper">
+    <ng-container *ngIf="viewerLoading; else viewerState">
+      <div class="viewer-placeholder">
+        <strong>Chargement du viewer Spline...</strong>
+ 
+      </div>
+    </ng-container>
+
+    <ng-template #viewerState>
+      <spline-viewer
+        *ngIf="canRenderViewer; else installBlock"
+        [attr.url]="sceneUrl"
+        loading-anim="true"
+        loading="eager"
+        events-target="global"
+        hint="true"
+      ></spline-viewer>
+    </ng-template>
+
+    <ng-template #installBlock>
+      <div class="viewer-placeholder">
+        <strong>Viewer Spline pret, scene reelle encore a brancher</strong>
+         
+        <a *ngIf="sceneUrl" [href]="sceneUrl" target="_blank" rel="noreferrer">Ouvrir l URL de scene</a>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="viewer-footer">
+    <p>La 3D est preparee pour Spline. L estimation materiaux reste volontairement en attente.</p>
+    <a class="secondary-link" [routerLink]="['../2d']">Retour a la 2D</a>
+  </div>
+</div>

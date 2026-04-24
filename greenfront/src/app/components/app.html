@@ -1,2 +1,15 @@
+<ng-container *ngIf="showDashboardShell; else authLayout">
+  <div class="layout-wrapper">
+    <app-sidebars></app-sidebars>
+    <div class="main-content">
+      <app-header></app-header>
+      <main class="page-content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+</ng-container>
 
-<router-outlet></router-outlet>
+<ng-template #authLayout>
+  <router-outlet></router-outlet>
+</ng-template>

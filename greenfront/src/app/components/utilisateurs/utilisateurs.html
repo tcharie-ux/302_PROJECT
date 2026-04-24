@@ -8,7 +8,7 @@
       </div>
 
       <div class="header-actions">
-        <a routerLink="/accueil" class="ghost-action">Retour a l'accueil</a>
+        <a routerLink="/dashboard-admin" class="ghost-action">Retour au dashboard</a>
         <button type="button" class="primary-action" (click)="loadUsers()">Actualiser</button>
       </div>
     </div>
@@ -22,7 +22,7 @@
           <tr>
             <th>ID</th>
             <th>Nom complet</th>
-            <th>Email</th>
+            <th>Identifiant</th>
             <th>Role</th>
             <th>Direction</th>
           </tr>
@@ -31,7 +31,7 @@
           <tr *ngFor="let utilisateur of utilisateurs">
             <td>{{ utilisateur.id || '-' }}</td>
             <td>{{ getDisplayName(utilisateur) }}</td>
-            <td>{{ getDisplayEmail(utilisateur) }}</td>
+            <td>{{ getDisplayIdentifier(utilisateur) }}</td>
             <td>{{ getDisplayRole(utilisateur) }}</td>
             <td>{{ utilisateur.direction || '-' }}</td>
           </tr>

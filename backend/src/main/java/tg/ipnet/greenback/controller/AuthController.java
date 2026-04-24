@@ -52,7 +52,7 @@ public class AuthController {
         ));
     }
 
-    @PostMapping({"/v1/login", "/auth/login"})
+    @PostMapping("/auth/login")
     @Operation(
             summary = "Authentifier un utilisateur",
             description = "Authentifie un `Utilisateur` via son email ou son nom puis retourne un JWT",
@@ -95,7 +95,7 @@ public class AuthController {
         ));
     }
 
-    @PostMapping({"/v1/register", "/auth/register"})
+    @PostMapping("/auth/register")
     @Operation(
             summary = "Inscription d'un client",
             description = "Crée un compte basé sur l'entité `Utilisateur` sans JWT",

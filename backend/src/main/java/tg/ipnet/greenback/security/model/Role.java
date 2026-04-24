@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import tg.ipnet.greenback.utils.BaseAuditEntity;
 
@@ -35,6 +36,13 @@ public class Role extends BaseAuditEntity implements Serializable {
     private tg.ipnet.greenback.enums.Role name;
 
     public Role() {
+    }
+
+    @PrePersist
+    private void ensurePublicId() {
+        if (publicId == null) {
+            publicId = UUID.randomUUID();
+        }
     }
 
     public Long getId() {

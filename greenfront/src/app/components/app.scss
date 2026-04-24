@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(18, 105, 74, 0.12), transparent 32%),
+    linear-gradient(180deg, #f5f8f6 0%, #eef3ef 100%);
+}
+
+.layout-wrapper {
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: 260px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  padding: 32px;
+}
+
+@media (max-width: 960px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}

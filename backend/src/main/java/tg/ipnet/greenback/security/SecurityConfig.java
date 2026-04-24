@@ -42,7 +42,7 @@ public class SecurityConfig {
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/api/v1/login", "/api/v1/register", "/error", "/csrf", "/resources/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/import/**", "/etats/**", "/datasource/**")
+                        .requestMatchers("/", "/api/health", "/api/auth/login", "/api/auth/register", "/api/v1/login", "/api/v1/register", "/error", "/csrf", "/resources/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/import/**", "/etats/**", "/datasource/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/notifications/invitations/*").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/v1/notifications/invitations/*/accept").permitAll()

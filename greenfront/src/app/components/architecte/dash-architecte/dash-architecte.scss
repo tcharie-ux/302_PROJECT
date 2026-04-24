@@ -1,0 +1,145 @@
+.dashboard-body {
+  display: grid;
+  gap: 22px;
+}
+
+.welcome-section h1,
+.welcome-section p,
+.projects-section h3,
+.appointments-section h3 {
+  margin: 0;
+}
+
+.welcome-section p {
+  margin-top: 8px;
+  color: #5f776f;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card,
+.projects-section,
+.appointments-section {
+  background: white;
+  padding: 22px;
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(20, 51, 45, 0.08);
+}
+
+.stat-card h2 {
+  margin: 10px 0 6px;
+  color: #173b35;
+  font-size: 2rem;
+}
+
+.stat-card small {
+  color: #648078;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 16px;
+}
+
+.section-header,
+.quick-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary,
+.btn-outline,
+.action-link {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #173b35;
+  color: white;
+}
+
+.btn-outline {
+  background: #e1efe8;
+  color: #173b35;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf3ef;
+}
+
+.badge-purple {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #ece8f8;
+  color: #443b74;
+}
+
+.text-red {
+  color: #8b5e3c;
+  font-weight: 700;
+}
+
+.appointment-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.date-box {
+  min-width: 72px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #e7f4ed;
+  text-align: center;
+}
+
+.date-box span,
+.date-box strong,
+.appt-info span,
+.appt-info small {
+  display: block;
+}
+
+.appt-info span,
+.appt-info small {
+  margin-top: 6px;
+  color: #5f776f;
+}
+
+.action-link {
+  background: transparent;
+  color: #173b35;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .stats-grid,
+  .main-grid,
+  .section-header,
+  .quick-actions {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

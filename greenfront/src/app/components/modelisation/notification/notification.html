@@ -1,0 +1,30 @@
+<section class="notification-page">
+  <div class="notification-header">
+    <div>
+      <h2>Centre de notifications</h2>
+      <p>Suivi des validations, des remarques et des preparatifs avant integration Spline.</p>
+    </div>
+    <button class="btn-secondary" routerLink="/mesprojets">Retour aux projets</button>
+  </div>
+
+  <div class="notification-list">
+    <p class="notification-warning" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <article class="notification-card" *ngFor="let notification of notifications">
+      <div
+        class="badge"
+        [class.warning]="notification.level === 'warning'"
+        [class.success]="notification.level === 'success'"
+      >
+        {{ notification.level }}
+      </div>
+      <div class="notification-content">
+        <h3>{{ notification.title }}</h3>
+        <p>{{ notification.message }}</p>
+        <small>{{ notification.createdAt }}</small>
+      </div>
+      <button class="btn-primary" *ngIf="notification.projectId" (click)="openProject(notification.projectId)">
+        Ouvrir le projet
+      </button>
+    </article>
+  </div>
+</section>

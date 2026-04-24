@@ -1,0 +1,54 @@
+<section class="detail-wrapper" *ngIf="project as currentProject; else missingProject">
+  <div class="header-project">
+    <div>
+      <h1>{{ currentProject.name }}</h1>
+      <p>{{ currentProject.summary }}</p>
+      <span class="badge">Projet {{ currentProject.id }} - {{ currentProject.status }}</span>
+    </div>
+    <div class="actions">
+      <button class="btn-save" [routerLink]="['/modelisation', currentProject.id, 'esquisse']">Esquisse</button>
+      <button class="btn-export" [routerLink]="['/modelisation', currentProject.id, '3d']">Aller en 3D</button>
+    </div>
+  </div>
+
+  <div class="project-overview">
+    <article class="overview-card">
+      <span>Surface utile</span>
+      <strong>{{ floorArea }} m2</strong>
+      <small>{{ currentProject.dimensions.floors }} niveau(x)</small>
+    </article>
+    <article class="overview-card">
+      <span>Dimensions</span>
+      <strong>{{ currentProject.dimensions.length }} x {{ currentProject.dimensions.width }} m</strong>
+      <small>Hauteur moyenne {{ currentProject.dimensions.height }} m</small>
+    </article>
+    <article class="overview-card">
+      <span>Equipe</span>
+      <strong>{{ currentProject.architectName }}</strong>
+      <small>Client: {{ currentProject.clientName }}</small>
+    </article>
+  </div>
+
+  <nav class="stage-nav">
+    <a
+      *ngFor="let stage of stageLinks"
+      [routerLink]="stage.route"
+      routerLinkActive="is-active"
+      class="stage-link"
+    >
+      <strong>{{ stage.label }}</strong>
+      <span>{{ stage.description }}</span>
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</section>
+
+<ng-template #missingProject>
+  <section class="detail-wrapper">
+    <div class="overview-card">
+      <strong>Projet introuvable</strong>
+      <span>Le routeur est pret, mais ce projet n est pas encore fourni par les donnees front.</span>
+    </div>
+  </section>
+</ng-template>

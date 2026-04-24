@@ -1,183 +1,132 @@
-.admin-page {
-  min-height: 100vh;
-  padding: 48px 24px;
-  background:
-    radial-gradient(circle at top right, rgba(251, 191, 36, 0.16), transparent 28%),
-    linear-gradient(135deg, #fff7ed 0%, #f8fafc 100%);
-}
-
-.admin-hero {
-  max-width: 1180px;
-  margin: 0 auto 28px;
-  padding: 32px;
+.dashboard-body {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
-  gap: 24px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+  gap: 22px;
 }
 
-.eyebrow {
-  margin: 0 0 12px;
-  color: #b45309;
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-copy h1 {
+.welcome-section h1,
+.welcome-section p,
+.project-status-section h3,
+.users-section h3 {
   margin: 0;
-  font-size: clamp(2.4rem, 4vw, 4rem);
-  line-height: 1;
-  color: #111827;
 }
 
-.hero-copy h1 span {
-  display: block;
+.welcome-section p {
   margin-top: 8px;
-  color: #d97706;
+  color: #5f776f;
 }
 
-.intro {
-  max-width: 640px;
-  margin: 18px 0 0;
-  color: #4b5563;
-  line-height: 1.7;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.hero-actions {
+.stat-card,
+.users-section,
+.project-status-section {
+  background: white;
+  padding: 22px;
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(20, 51, 45, 0.08);
+}
+
+.stat-card h2 {
+  margin: 10px 0 6px;
+  color: #173b35;
+  font-size: 2rem;
+}
+
+.stat-card small {
+  color: #648078;
+}
+
+.admin-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
 }
 
-.primary-action,
-.secondary-action,
-.admin-card a {
-  padding: 14px 20px;
-  border-radius: 999px;
-  font: inherit;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.primary-action {
-  background: linear-gradient(135deg, #d97706, #f59e0b);
-  color: #fff;
-  box-shadow: 0 14px 30px rgba(217, 119, 6, 0.24);
-}
-
-.secondary-action {
-  border: 1px solid #d1d5db;
-  background: #fff;
-  color: #111827;
+.btn-primary,
+.btn-white,
+.btn-text {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
   cursor: pointer;
 }
 
-.admin-panel {
-  padding: 24px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
-  color: #f9fafb;
+.btn-primary {
+  background: #173b35;
+  color: white;
 }
 
-.panel-label {
-  margin: 0 0 12px;
-  color: #fcd34d;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.btn-white {
+  background: #e1efe8;
+  color: #173b35;
 }
 
-.admin-panel h2 {
-  margin: 0 0 8px;
-  font-size: 1.6rem;
-}
-
-.admin-panel > p {
-  margin: 0;
-  color: #d1d5db;
-}
-
-.panel-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.panel-stats span {
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.admin-grid {
-  max-width: 1180px;
-  margin: 0 auto;
+.main-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
 }
 
-.admin-card {
-  padding: 24px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
 }
 
-.admin-card h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  color: #111827;
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf3ef;
 }
 
-.admin-card p,
-.admin-card li {
-  color: #4b5563;
-  line-height: 1.6;
+.badge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
 }
 
-.admin-card ul {
-  margin: 16px 0 0;
-  padding-left: 20px;
+.badge-green {
+  background: #e7f4ed;
+  color: #173b35;
 }
 
-.admin-card a {
-  display: inline-block;
-  margin-top: 12px;
-  background: #111827;
-  color: #fff;
+.progress-item + .progress-item {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #edf3ef;
 }
 
-.accent {
-  background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+.label-box span,
+.label-box strong {
+  display: block;
 }
 
-@media (max-width: 900px) {
-  .admin-hero,
-  .admin-grid {
+.label-box strong {
+  margin-top: 6px;
+}
+
+.progress-item p {
+  margin: 10px 0 0;
+  color: #5f776f;
+}
+
+.btn-text {
+  background: transparent;
+  color: #173b35;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .stats-grid,
+  .main-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 640px) {
-  .admin-page {
-    padding: 24px 16px;
-  }
-
-  .admin-hero,
-  .admin-card,
-  .admin-panel {
-    padding: 20px;
-  }
-
-  .hero-copy h1 {
-    line-height: 1.08;
+  .admin-actions {
+    flex-direction: column;
   }
 }

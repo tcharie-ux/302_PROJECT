@@ -48,12 +48,10 @@
           </div>
         </div>
 
-        <label for="role">Votre role</label>
-        <select id="role" formControlName="role">
-          <option value="CLIENT">Client</option>
-          <option value="ARCHITECTE">Architecte</option>
-          <option value="ADMIN">Administrateur</option>
-        </select>
+        <p class="helper-text">
+          Les inscriptions publiques creent un compte client. Les comptes architecte suivent le
+          circuit d'invitation du backend.
+        </p>
 
         <label class="terms">
           <input type="checkbox" formControlName="acceptTerms" />

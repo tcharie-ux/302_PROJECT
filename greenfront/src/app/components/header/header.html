@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="title-box">
+    <span class="page-kicker">Console projet</span>
+    <h1>{{ currentTitle }}</h1>
+  </div>
+
+  <div class="user-actions">
+    <a routerLink="/notifications" class="icon-button" aria-label="Notifications">
+      <i class="pi pi-bell"></i>
+    </a>
+    <a routerLink="/profil" class="profile-pill">
+      <div class="avatar">{{ initials }}</div>
+      <span class="user-name">{{ displayName }}</span>
+    </a>
+    <button type="button" class="logout-button" (click)="logout()">Deconnexion</button>
+  </div>
+</header>

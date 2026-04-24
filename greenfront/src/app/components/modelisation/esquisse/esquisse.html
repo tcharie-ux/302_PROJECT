@@ -1,0 +1,23 @@
+<div class="workspace">
+  <div class="workspace-header">
+    <div>
+      <h3>Projet : {{ projectName }}</h3>
+      <p>{{ statusMessage }}</p>
+    </div>
+    <button class="secondary-action" [routerLink]="['../2d']">Passer a la 2D</button>
+  </div>
+
+  <div class="tools">
+    <button (click)="setTool('mur')" [class.active]="currentTool === 'mur'">Mur</button>
+    <button (click)="setTool('porte')" [class.active]="currentTool === 'porte'">Porte</button>
+    <button (click)="setTool('fenetre')" [class.active]="currentTool === 'fenetre'">Fenetre</button>
+    <button (click)="setTool('delete')" [class.active]="currentTool === 'delete'">Supprimer</button>
+    <button (click)="clearSketch()">Reinitialiser</button>
+  </div>
+
+  <canvas #canvas width="800" height="500"></canvas>
+
+  <div class="actions">
+    <button (click)="save()">Sauvegarder</button>
+  </div>
+</div>

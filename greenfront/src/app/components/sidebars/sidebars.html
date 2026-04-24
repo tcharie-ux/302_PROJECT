@@ -1,0 +1,29 @@
+<nav class="sidebar">
+  <div class="sidebar-top">
+    <div class="logo-box">
+      <p class="eyebrow">ArchiMorph</p>
+      <h2>Workspace 3D</h2>
+      <span>Pipeline esquisse, 2D et 3D</span>
+    </div>
+
+    <ul class="nav-links">
+      <li *ngFor="let item of navigationItems">
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+        >
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <strong>{{ displayName }}</strong>
+      <span>{{ roleLabel }}</span>
+    </div>
+  </div>
+</nav>

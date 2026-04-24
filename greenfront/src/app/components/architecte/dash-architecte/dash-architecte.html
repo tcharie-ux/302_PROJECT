@@ -1,0 +1,60 @@
+<div class="dashboard-body">
+  <div class="welcome-section">
+    <h1>Dashboard architecte</h1>
+    <p>Voici les dossiers en cours et les passerelles vers la 2D puis la 3D.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card" *ngFor="let metric of metrics">
+      <div class="stat-details">
+        <span>{{ metric.label }}</span>
+        <h2>{{ metric.value }}</h2>
+        <small>{{ metric.detail }}</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="projects-section">
+      <div class="section-header">
+        <h3>Mes projets</h3>
+        <div class="quick-actions">
+          <button class="btn-primary" routerLink="/mesprojets">Voir tous les projets</button>
+          <button class="btn-outline" routerLink="/notifications">Messages projet</button>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>PROJET</th>
+            <th>CLIENT</th>
+            <th>STATUT</th>
+            <th>PROGRESSION</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.name }}</td>
+            <td>{{ project.clientName }}</td>
+            <td><span class="badge badge-purple">{{ project.status }}</span></td>
+            <td><span class="text-red">{{ project.progress }}%</span></td>
+            <td><button class="action-link" (click)="openProject(project.id)">Ouvrir</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="appointments-section">
+      <h3>Priorite de la semaine</h3>
+      <div class="appointment-card">
+        <div class="date-box blue"><span>Avril</span><strong>24</strong></div>
+        <div class="appt-info">
+          <strong>{{ projects[0]?.name }}</strong>
+          <span>Passer la 2D en version exploitable par la 3D</span>
+          <small>Liaison Spline a preparer</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

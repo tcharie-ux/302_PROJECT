@@ -1,0 +1,122 @@
+.workspace {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 16px 34px rgba(20, 51, 45, 0.08);
+}
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.workspace-header h3,
+.workspace-header p {
+  margin: 0;
+}
+
+.workspace-header p {
+  margin-top: 8px;
+  color: #5f776f;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tools button,
+.actions button,
+.go-next,
+.apply-button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #d8e7df;
+  background: #f8fbf9;
+  cursor: pointer;
+}
+
+.tools button.active,
+.go-next {
+  background: #173b35;
+  color: white;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.dimension-card {
+  border: 1px solid #d8e7df;
+  border-radius: 18px;
+  padding: 18px;
+  background: #f8fbf9;
+}
+
+.dimension-card h4 {
+  margin: 0 0 16px;
+}
+
+.dimension-fields {
+  display: grid;
+  gap: 12px;
+}
+
+.dimension-fields label {
+  display: grid;
+  gap: 6px;
+  color: #335149;
+}
+
+.dimension-fields input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d0dfd7;
+}
+
+.dimension-summary {
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 16px;
+  background: white;
+}
+
+.dimension-summary strong,
+.dimension-summary span {
+  display: block;
+}
+
+.dimension-summary span {
+  margin-top: 6px;
+  color: #648078;
+}
+
+.canvas-container {
+  border: 1px solid #d8e7df;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.canvas-container canvas {
+  width: 100%;
+  display: block;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+@media (max-width: 960px) {
+  .workspace-header,
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+}

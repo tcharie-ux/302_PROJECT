@@ -47,8 +47,8 @@ export class Utilisateurs implements OnInit {
     return fullName || 'Non renseigne';
   }
 
-  getDisplayEmail(user: Utilisateur): string {
-    return user.email || user.username || 'Non renseigne';
+  getDisplayIdentifier(user: Utilisateur): string {
+    return user.username || user.email || 'Non renseigne';
   }
 
   getDisplayRole(user: Utilisateur): string {

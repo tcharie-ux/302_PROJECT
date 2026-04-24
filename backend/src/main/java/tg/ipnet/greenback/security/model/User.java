@@ -49,6 +49,13 @@ public class User extends BaseAuditEntity implements Serializable {
     public User() {
     }
 
+    @PrePersist
+    private void ensurePublicId() {
+        if (publicId == null) {
+            publicId = UUID.randomUUID();
+        }
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,0 +1,85 @@
+.modal-form-container {
+  display: grid;
+}
+
+.form-card {
+  background: white;
+  padding: 24px;
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(20, 51, 45, 0.08);
+}
+
+.form-card h2 {
+  margin: 0 0 20px;
+}
+
+.project-form,
+.dimensions-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.dimensions-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #d7e5de;
+}
+
+.radio-group {
+  display: flex;
+  gap: 14px;
+}
+
+.radio-item {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.success-message {
+  margin: 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #e7f4ed;
+  color: #173b35;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-submit,
+.btn-cancel {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-submit {
+  background: #173b35;
+  color: white;
+}
+
+.btn-cancel {
+  background: #e1efe8;
+  color: #173b35;
+}
+
+@media (max-width: 960px) {
+  .dimensions-grid,
+  .form-actions {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+}

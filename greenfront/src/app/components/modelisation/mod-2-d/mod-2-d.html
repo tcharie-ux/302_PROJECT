@@ -1,0 +1,53 @@
+<div class="workspace">
+  <div class="workspace-header">
+    <div>
+      <h3>Projet : {{ projectName }}</h3>
+      <p>{{ statusMessage }}</p>
+    </div>
+    <button class="go-next" (click)="goTo3D()">Generer la 3D</button>
+  </div>
+
+  <div class="tools">
+    <button (click)="setTool('mur')" [class.active]="currentTool === 'mur'">Mur</button>
+    <button (click)="setTool('porte')" [class.active]="currentTool === 'porte'">Porte</button>
+    <button (click)="setTool('fenetre')" [class.active]="currentTool === 'fenetre'">Fenetre</button>
+    <button (click)="setTool('delete')" [class.active]="currentTool === 'delete'">Suppression logique</button>
+  </div>
+
+  <div class="config-grid">
+    <div class="dimension-card">
+      <h4>Parametres du plan</h4>
+      <div class="dimension-fields">
+        <label>
+          Longueur
+          <input type="number" [(ngModel)]="dimensionDraft.length">
+        </label>
+        <label>
+          Largeur
+          <input type="number" [(ngModel)]="dimensionDraft.width">
+        </label>
+        <label>
+          Hauteur
+          <input type="number" [(ngModel)]="dimensionDraft.height">
+        </label>
+        <label>
+          Niveaux
+          <input type="number" [(ngModel)]="dimensionDraft.floors">
+        </label>
+      </div>
+      <div class="dimension-summary">
+        <strong>{{ surface }} m2</strong>
+        <span>surface exploitable pour la future estimation</span>
+      </div>
+      <button class="apply-button" (click)="applyDimensions()">Appliquer</button>
+    </div>
+
+    <div class="canvas-container">
+      <canvas #planCanvas width="900" height="500"></canvas>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="save()">Sauvegarder</button>
+  </div>
+</div>

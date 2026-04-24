@@ -1,0 +1,113 @@
+.sidebar {
+  background: linear-gradient(180deg, #103c32 0%, #0a2b24 100%);
+  width: 260px;
+  height: 100vh;
+  color: white;
+  padding: 24px 18px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-top {
+  display: grid;
+  gap: 28px;
+}
+
+.logo-box {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-box h2,
+.logo-box p,
+.logo-box span {
+  margin: 0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: rgba(235, 245, 242, 0.72);
+}
+
+.logo-box h2 {
+  margin-top: 8px;
+  font-size: 1.5rem;
+}
+
+.logo-box span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(235, 245, 242, 0.74);
+  font-size: 0.92rem;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  padding: 13px 16px;
+  border-radius: 14px;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  background: rgba(231, 255, 245, 0.12);
+  transform: translateX(3px);
+}
+
+.nav-links i {
+  font-size: 1rem;
+}
+
+.sidebar-footer {
+  padding-top: 18px;
+}
+
+.user-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.user-card strong,
+.user-card span {
+  display: block;
+}
+
+.user-card span {
+  margin-top: 6px;
+  color: rgba(236, 245, 241, 0.72);
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+}

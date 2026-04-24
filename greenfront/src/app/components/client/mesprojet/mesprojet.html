@@ -1,1 +1,50 @@
-<p>mesprojet works!</p>
+<div class="projects-container">
+  <div class="page-header">
+    <h1>Mes Projets</h1>
+    <button class="btn-primary" routerLink="/projets/nouveau">Nouveau projet</button>
+  </div>
+
+  <div class="search-filter-bar">
+    <div class="search-input">
+      <i class="pi pi-search"></i>
+      <input type="text" placeholder="Rechercher un projet..." [(ngModel)]="searchTerm">
+    </div>
+    <button class="btn-filter">{{ filteredProjects.length }} resultat(s)</button>
+  </div>
+
+  <p class="state-message" *ngIf="loading">Chargement des projets...</p>
+  <p class="state-message warning" *ngIf="!loading && errorMessage">{{ errorMessage }}</p>
+
+  <div class="projects-grid">
+    <div class="project-card" *ngFor="let project of filteredProjects">
+      <div class="card-header">
+        <div>
+          <h3>{{ project.name }}</h3>
+          <span class="category">{{ project.type }}</span>
+        </div>
+        <span class="badge badge-warning">{{ project.status }}</span>
+      </div>
+
+      <div class="card-info">
+        <p>{{ project.location }}</p>
+        <p>{{ project.updatedAt }}</p>
+        <p>{{ project.architectName }}</p>
+      </div>
+
+      <div class="progression-section">
+        <div class="progression-labels">
+          <span>Progression</span>
+          <span>{{ project.progress }}%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" [style.width.%]="project.progress"></div>
+        </div>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-open" (click)="openProject(project.id)">Ouvrir</button>
+        <button class="btn-options" [routerLink]="['/modelisation', project.id, '3d']">Aller en 3D</button>
+      </div>
+    </div>
+  </div>
+</div>
