@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { App } from './app/components/app';
 import { AuthTokenInterceptor } from './app/interceptors/auth-token-interceptor';
-import { routes } from './app/app-routing';
+import { routes } from './app/app-routing-module';
 
 bootstrapApplication(App, {
   providers: [

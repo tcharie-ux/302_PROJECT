@@ -19,11 +19,11 @@ export class App {
     private router: Router,
     private readonly activatedRoute: ActivatedRoute
   ) {
-    this.updateLayout();
-
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.updateLayout());
+
+    this.updateLayout();
   }
 
   private updateLayout(): void {
