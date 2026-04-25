@@ -5,12 +5,14 @@ import { ProjectsApi } from '../../../services/projects-api';
 import { WorkspaceData } from '../../../services/workspace-data';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-notification',
-  standalone: false,
+  standalone: true,
   templateUrl: './notification.html',
   styleUrl: './notification.scss',
+  imports: [NgIf] 
 })
 export class Notification {
   notifications: WorkspaceNotification[];

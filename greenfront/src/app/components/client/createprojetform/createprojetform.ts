@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectsApi } from '../../../services/projects-api';
 import { WorkspaceData } from '../../../services/workspace-data';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-createprojetform',
-  standalone: false,
+  standalone: true,
   templateUrl: './createprojetform.html',
   styleUrl: './createprojetform.scss',
+  imports:[FormsModule]
 })
 export class Createprojetform {
   successMessage = '';

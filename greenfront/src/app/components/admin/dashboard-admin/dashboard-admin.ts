@@ -9,7 +9,7 @@ import { WorkspaceData } from '../../../services/workspace-data';
 
 @Component({
   selector: 'app-dashboard-admin',
-  standalone: false,
+  standalone: true,
   templateUrl: './dashboard-admin.html',
   styleUrl: './dashboard-admin.scss',
 })

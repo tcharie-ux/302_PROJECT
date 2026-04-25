@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from '../../models/utilisateur';
 import { Authentification } from '../../services/authentification';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-utilisateurs',
-  standalone: false,
+  standalone: true,
   templateUrl: './utilisateurs.html',
   styleUrl: './utilisateurs.scss',
+  imports: [NgIf] 
 })
 export class Utilisateurs implements OnInit {
   loading = true;

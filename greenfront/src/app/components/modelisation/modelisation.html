@@ -1,3 +1,5 @@
+
+
 <section class="detail-wrapper" *ngIf="project as currentProject; else missingProject">
   <div class="header-project">
     <div>
@@ -6,8 +8,8 @@
       <span class="badge">Projet {{ currentProject.id }} - {{ currentProject.status }}</span>
     </div>
     <div class="actions">
-      <button class="btn-save" [routerLink]="['/modelisation', currentProject.id, 'esquisse']">Esquisse</button>
-      <button class="btn-export" [routerLink]="['/modelisation', currentProject.id, '3d']">Aller en 3D</button>
+      <a class="btn-save" [routerLink]="['/modelisation', currentProject.id, 'esquisse']">Esquisse</a>
+      <a class="btn-export" [routerLink]="['/modelisation', currentProject.id, '3d']">Aller en 3D</a>
     </div>
   </div>
 

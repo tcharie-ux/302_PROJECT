@@ -2,12 +2,14 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkspaceProject } from '../../../models/workspace';
 import { WorkspaceData } from '../../../services/workspace-data';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-mod-2-d',
-  standalone: false,
+  standalone: true,
   templateUrl: './mod-2-d.html',
   styleUrl: './mod-2-d.scss',
+ imports: [FormsModule]
 })
 export class Mod2D implements OnInit, AfterViewInit {
   @ViewChild('planCanvas') planCanvasRef!: ElementRef<HTMLCanvasElement>;

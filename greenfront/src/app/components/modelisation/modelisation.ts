@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ProjectStage, WorkspaceProject } from '../../models/workspace';
 import { ProjectsApi } from '../../services/projects-api';
 import { WorkspaceData } from '../../services/workspace-data';
-
+import { RouterLink, RouterOutlet } from '@angular/router'; 
 @Component({
   selector: 'app-modelisation',
-  standalone: false,
+  standalone: true,
   templateUrl: './modelisation.html',
   styleUrl: './modelisation.scss',
+    imports: [RouterLink, RouterOutlet, RouterLinkActive]
 })
 export class Modelisation implements OnInit {
   projectId: string | null = null;

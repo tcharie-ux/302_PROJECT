@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { WorkspaceProject } from '../../../models/workspace';
 import { WorkspaceData } from '../../../services/workspace-data';
+import { DecimalPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-mod-3-d',
-  standalone: false,
+  standalone: true,
   templateUrl: './mod-3-d.html',
   styleUrl: './mod-3-d.scss',
+      imports: [RouterLink, RouterOutlet, RouterLinkActive,NgIf, DecimalPipe],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Mod3D implements OnInit {
   project: WorkspaceProject | null = null;

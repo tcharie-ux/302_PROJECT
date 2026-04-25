@@ -5,7 +5,7 @@ import { WorkspaceData } from '../../../services/workspace-data';
 
 @Component({
   selector: 'app-dash-architecte',
-  standalone: false,
+  standalone: true,
   templateUrl: './dash-architecte.html',
   styleUrl: './dash-architecte.scss',
 })

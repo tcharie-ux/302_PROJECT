@@ -1,13 +1,14 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { WorkspaceProject } from '../../../models/workspace';
 import { WorkspaceData } from '../../../services/workspace-data';
 
 @Component({
   selector: 'app-esquisse',
-  standalone: false,
+  standalone: true,
   templateUrl: './esquisse.html',
   styleUrl: './esquisse.scss',
+  imports:[RouterLink]
 })
 export class Esquisse implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;

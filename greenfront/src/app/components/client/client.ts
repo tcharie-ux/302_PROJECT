@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Authentification } from '../../services/authentification';
 import { ProfilePreferences, UserRole } from '../../models/workspace';
 import { WorkspaceData } from '../../services/workspace-data';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-client',
-  standalone: false,
+  standalone: true,
   templateUrl: './client.html',
   styleUrl: './client.scss',
+  imports:[FormsModule]
 })
 export class Client {
   successMessage = '';

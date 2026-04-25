@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
@@ -10,13 +10,13 @@ import { Sidebars } from './sidebars/sidebars';
   standalone: true,
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  imports: [NgIf, RouterOutlet, Header, Sidebars],
+  imports: [CommonModule, RouterOutlet, Header, Sidebars],
 })
 export class App {
   showDashboardShell = false;
 
   constructor(
-    private readonly router: Router,
+    private router: Router,
     private readonly activatedRoute: ActivatedRoute
   ) {
     this.updateLayout();
@@ -27,12 +27,14 @@ export class App {
   }
 
   private updateLayout(): void {
-    let route = this.activatedRoute.firstChild;
-    let layout = route?.snapshot.data['layout'];
+    // On repart toujours de la racine du snapshot du routeur
+    let route = this.router.routerState.snapshot.root;
+    let layout = route.data['layout'];
 
-    while (route?.firstChild) {
+    // On descend jusqu'à la route active la plus profonde
+    while (route.firstChild) {
       route = route.firstChild;
-      layout = route.snapshot.data['layout'] ?? layout;
+      layout = route.data['layout'] ?? layout;
     }
 
     this.showDashboardShell = layout === 'dashboard';

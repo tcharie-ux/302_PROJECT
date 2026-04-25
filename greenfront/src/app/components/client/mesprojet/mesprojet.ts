@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { WorkspaceProject } from '../../../models/workspace';
 import { ProjectsApi } from '../../../services/projects-api';
 import { WorkspaceData } from '../../../services/workspace-data';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mesprojet',
-  standalone: false,
+  standalone: true,
   templateUrl: './mesprojet.html',
   styleUrl: './mesprojet.scss',
+    imports: [FormsModule,RouterLink] 
 })
 export class Mesprojet {
   projects: WorkspaceProject[];

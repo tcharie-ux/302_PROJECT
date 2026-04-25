@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { WorkspaceProject } from '../../../models/workspace';
 import { WorkspaceData } from '../../../services/workspace-data';
 
 @Component({
   selector: 'app-estimation',
-  standalone: false,
+  standalone: true,
   templateUrl: './estimation.html',
   styleUrl: './estimation.scss',
+  imports:[RouterLink]
 })
 export class Estimation implements OnInit {
   project: WorkspaceProject | null = null;

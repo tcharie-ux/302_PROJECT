@@ -9,7 +9,7 @@ import { DashboardMetric, WorkspaceNotification, WorkspaceProject } from '../../
 
 @Component({
   selector: 'app-dashboard-client',
-  standalone: false,
+  standalone: true,
   templateUrl: './dashboard-client.html',
   styleUrl: './dashboard-client.scss',
 })

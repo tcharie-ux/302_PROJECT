@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-logout',
-  standalone: false,
+  standalone:true,
   templateUrl: './logout.html',
   styleUrl: './logout.scss',
 })
